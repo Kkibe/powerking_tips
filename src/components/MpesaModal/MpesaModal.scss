@@ -1,0 +1,84 @@
+.mpesa-modal{
+    width: 100%;
+    max-width: 400px;
+    min-width: 300px;
+    max-height: calc(100vh - 25px);
+    height: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column; 
+    padding: 10px 10px;
+    position: fixed;
+    margin-top: 5px;
+    bottom: 0;
+    z-index: 11;
+    background: var(--lite);
+    box-shadow: var(--shadow); 
+    top: -100%;
+    transition: 1s ease-in;
+    ul{
+        list-style-type: none;
+        padding: 5px 10px;
+    }
+    
+    .close{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 20px;
+        height: 20px;
+        margin: 5px 5px;
+        background: var(--transparent);
+        cursor: pointer;
+        &:hover{
+            background: var(--light-blue);
+            border: .5px solid var(--blue);
+        }
+    }
+    
+    form{
+        width:100%;
+        font-family: 'Lato';
+        font-weight: 400;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        input, .input{
+            height: 35px;
+            position: relative;
+            border: none;
+            width: 100%;
+            border-radius: 6px;
+            appearance: none;
+            box-shadow: var(--shadow);
+            transition: all 0.4s;
+            outline: none;
+          }
+
+        input{
+            padding: 5px 12px;
+        }
+        label{
+            width: 100%;
+            text-align: left;
+        }
+
+        h4{
+            margin: 0;
+        }
+        .error{
+            color: red;
+        }
+
+        .success{
+            color: green;
+        }
+    }
+
+    &.active{
+        top: 0;
+    }
+}

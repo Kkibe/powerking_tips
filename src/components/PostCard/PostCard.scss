@@ -1,0 +1,104 @@
+.post-card{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: .2%;
+    margin: 0 1%;
+    background-color: var(--lite);
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    border-radius: 10px;
+    cursor: pointer;
+    
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+
+    .center{
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: .1rem;
+        .teams{
+            display: flex;
+            width: 100%;
+            gap: 5px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            .home, .away{
+                width: 100%;
+                flex: 1;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                .name{
+
+                }
+                .image{
+                    width: 10%;
+                    min-width: 35px;
+                    display: flex;
+                    justify-content: center;
+                    border-radius: 20%;
+                    img{
+                        width: 100%;
+                        height: auto;
+                        min-height: 35px;
+                        border-radius: 20%;
+                        object-fit: fill;
+                    }
+                }
+            }
+            .away{
+                flex-direction: row-reverse;
+            }
+            @media screen and (max-width: 320px){
+                &{
+                    flex-direction: column;
+                }
+                .away{
+                    flex-direction: row;
+                }
+                .home, .away{
+                    justify-content:space-between;
+                }
+            }
+            .results{
+                width: 50px;
+                background: greenyellow;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+        }
+
+        .info{
+            color: var(--grey);
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            p{
+                display: flex;
+                padding: 0 0.3rem 0 0;
+                align-items: center;
+                font-size: 14px;
+                .icon{
+                    font-size: 14px;
+                    margin: 0 5px;
+                    &.won{
+                        color: var(--blue);
+                    }
+                    &.lost{
+                        color: red;
+                    }
+                }
+            }
+        }
+    }
+}
