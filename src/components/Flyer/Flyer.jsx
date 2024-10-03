@@ -19,11 +19,11 @@ export default function Flyer({tips}) {
           </video>
           <h1 className='title'>Unlock exclusive VIP predictions—boost your winnings today!</h1>
           <h2 className='title'>Win big anywhere you are with Expert Football Predictions</h2>
-          <Link to={'pay'} className='btn' onClick={() => setPrice(1500)}>Become A Member</Link>
+          <Link to={'pay'} className='btn' onClick={() => setPrice(3000)}>Become A Member</Link>
           <div className="scroll">
             <div className="scroll-track">
             {
-              tips.length > 0 && tips.concat(tips).map((tip) => {
+              tips.length > 0 && tips.filter((tip) =>(tip.won === 'won')).map((tip) => {
                 return <PostCard active setActive key={tip.id} data={tip}/>
               })
             }

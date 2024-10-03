@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
 import { AuthContext } from '../AuthContext';
-import Bg from '../assets/bg.mp4';
 import AppHelmet from '../components/AppHelmet';
 import {registerUser } from '../firebase';
+import { NavLink } from 'react-router-dom';
 
 const Register = () => {
     const { currentUser} = useContext(AuthContext);
@@ -36,9 +36,6 @@ const Register = () => {
 
     return (
         <div className='register'>
-            <video className='video' autoPlay loop muted>
-                <source src={Bg} type='video/mp4' />
-            </video>
             <AppHelmet title={"Login Powerking Tips"} />
             <form action="">
                 <h2>SIGN UP Free!</h2>
@@ -49,6 +46,7 @@ const Register = () => {
                 {
                     error && <span className="error text-danger">{error}</span>
                 }
+                <div className="text">Already have an account ?&emsp;|&emsp;<NavLink to='/login'>Login !</NavLink>  </div>
             </form>
         </div>
     );

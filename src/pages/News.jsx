@@ -12,7 +12,7 @@ export default function News() {
   const [loading, setLoading] = useState(true);
   const [news, setNews] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [newsPerPage] = useState(8);
+  const [newsPerPage] = useState(16);
   const [category, setCategory] = useState('all');
   let location = useLocation();
 
@@ -68,9 +68,6 @@ export default function News() {
             news.length > 0 && news.map((blog) => {
               return <NewsItem key={blog.id} data={blog}/>
             })
-          }
-          {
-            news.length > 0 && <NavLink className="btn" onClick={() => setCurrentPage(currentPage + 1)}>{loading ? "Loading..." : "Load More"}</NavLink>
           }
           {
             (!isOnline && (news.length === 0) && !loading) && <div className='no-network'>

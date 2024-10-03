@@ -1,7 +1,7 @@
 .post-detail{
-    width: 40%;
-    min-width: 250px;
-    padding: 1rem;
+    width:50%;
+    min-width: 280px;
+    padding: .5rem;
     position: sticky;
     right: 0;
     background-color: var(--lite);
@@ -19,6 +19,7 @@
             height: 50px;
             object-fit: fill;
             object-position: center;
+            border-radius: 50%;
         }
     }
 
@@ -27,26 +28,16 @@
         height: 1px;
         background-color: var(--grey);
         border: none;
-        margin: 1rem 0;
+        margin: .5rem 0;
     }
     
-    .detail-desc{
+    h4{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
         line-height: 1.5;
-        h4{
-            display: flex;
-            width: 100%;
-            align-items: center;
-            justify-content: space-between;
-            img{
-                width: 35px;
-                height: 35px;
-                object-fit: fill;
-                object-position: center;
-                margin-right: 5px;
-            }
-        }
     }
-    
     .detail-btn{
         display: flex;
         gap: 1rem;

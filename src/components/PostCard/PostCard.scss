@@ -29,43 +29,12 @@
             flex-wrap: wrap;
             align-items: center;
             justify-content: space-between;
-            .home, .away{
+            p{
                 width: 100%;
                 flex: 1;
                 display: flex;
                 align-items: center;
                 justify-content: space-around;
-                .name{
-
-                }
-                .image{
-                    width: 10%;
-                    min-width: 35px;
-                    display: flex;
-                    justify-content: center;
-                    border-radius: 20%;
-                    img{
-                        width: 100%;
-                        height: auto;
-                        min-height: 35px;
-                        border-radius: 20%;
-                        object-fit: fill;
-                    }
-                }
-            }
-            .away{
-                flex-direction: row-reverse;
-            }
-            @media screen and (max-width: 320px){
-                &{
-                    flex-direction: column;
-                }
-                .away{
-                    flex-direction: row;
-                }
-                .home, .away{
-                    justify-content:space-between;
-                }
             }
             .results{
                 width: 50px;

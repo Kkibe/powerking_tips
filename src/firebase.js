@@ -150,6 +150,34 @@ export const addMailList = async (data, setSuccess, setError) => {
   return;
 };
 
+export const addPhone = async (data) => {
+  const phoneDocRef = doc(db, "phone-numbers", data.phone);
+  const phoneDoc = await getDoc(phoneDocRef);
+  if (phoneDoc.exists()) {
+    return;
+  }
+  await setDoc(phoneDocRef, {...data}).then(async (response) => {
+  }).catch(async (error) => {
+    return;
+  });
+};
+
+export  const addTip = async (data, setError, setLoading) => {
+  setLoading(true);
+  const tipsDocRef = collection(db, "tips");
+  await addDoc(tipsDocRef, {
+    ...data
+  }).then(async (docRef) => {
+    alert("tip added")
+    window.location.replace(`/tips`);
+  }).catch(async (error) => {
+    setError(error.message);
+    setLoading(false);
+  });
+  setLoading(false)
+  
+};
+
 export  const addNews = async (data, setError, setLoading) => {
   setLoading(true);
   const newsDocRef = collection(db, "news");
@@ -175,18 +203,17 @@ export  const addNews = async (data, setError, setLoading) => {
       });
     })
   } else {
-    alert('Please} upload an image');
+    setError('Please upload an image')
     setLoading(false);
   };
   
 };
 
-export const getTips= async (pagination, date, setTips, setLoading) => {
+export const getTips= async (pagination, setTips, setLoading) => {
   setLoading(true);
   
   const tipsCollectionRef = collection(db, "tips");
-  //var q = query(tipsCollectionRef, where("date", "==", new Date().toLocaleDateString()), orderBy("date", "desc"), limit(pagination));
-  var q = query(tipsCollectionRef, limit(pagination))//,  where('date', '==', date));
+  var q = query(tipsCollectionRef, limit(pagination));
 
   const tips = [];
   await getDocs(q).then((data) => {

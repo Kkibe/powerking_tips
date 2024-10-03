@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Testimonials.scss'
 import { testimonials } from '../../data'
 
 export default function Testimonials() {
+  const [testimonies, setTestimonials] = useState(null);
+
+  useEffect(() => {
+    setTestimonials(testimonials)
+  }, [])
+
   return (
     <div className='testimonials'>
         {
-            testimonials.map(testimonial => {
+            testimonies && testimonies.map(testimonial => {
                 return  <div className="testimonial" key={testimonials.indexOf(testimonial)}>
                 <h4>"{testimonial.text}"</h4>
                 <div className="user">

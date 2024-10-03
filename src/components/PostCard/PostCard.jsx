@@ -20,17 +20,11 @@ export default function PostCard({setActive, data}) {
   <div className="post-card" onClick={handleClick} style={{borderLeft: data.premium ? "5px solid #FFBD59" : "5px solid green"}}>
     <div className="center">
       <div className="teams">
-        <div className="home">
-          <p className="name">{truncateLeague(data.home , 15)}</p>
-          <div className="image"><img src={data.homeImage} alt={data.home} /></div>
-        </div>
+        <p className="name">{truncateLeague(data.home , 15)}</p>
         <div className="results">
           {data.results ? data.results : "Pen" }
         </div>
-        <div className="away">
-          <p className="name">{truncateLeague(data.away , 15)}</p>
-          <div className="image"><img src={data.awayImage} alt={data.away} /></div>
-        </div>
+        <p className="name">{truncateLeague(data.away , 15)}</p>
       </div>
 
       

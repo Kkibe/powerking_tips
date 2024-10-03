@@ -7,7 +7,6 @@ const urlsToCache = [
     '*'
 ];
 
-
 window.self.addEventListener('install', event => {
     event.waitUntil(
         caches.open(CACHE_NAME)

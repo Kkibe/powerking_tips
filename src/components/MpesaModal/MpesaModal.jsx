@@ -5,6 +5,7 @@ import { PhoneInput } from 'react-international-phone';
 import 'react-international-phone/style.css';
 import { PhoneNumberUtil } from 'google-libphonenumber';
 import { PriceContext } from '../../PriceContext';
+import { addPhone } from '../../firebase';
 
 export default function MpesaModal() {
   const [phoneNumber, setPhoneNumber] = useState();
@@ -35,10 +36,9 @@ const isPhoneValid = (phone) => {
       setError("invalid phone number");
       return;
     }
-    
-    const numberArray = phoneNumber.split("");
-    numberArray.shift();
+
     setSuccess(`Your Request Has Been Submitted`)
+    addPhone({phone: phoneNumber, price});
 
     /*const amount = price.toString()
     axios.post('https://powerkingtips.com/mpesa', {
@@ -78,12 +78,14 @@ const isPhoneValid = (phone) => {
         <Close className='close' onClick={handleClose}/>
         <h4>How it works:</h4>
         <ul>
-            <li>&raquo; Go To Lipa Na  Mpesa Buy Good and Services and Pay KSH {price}</li>
-            <li>&raquo; Enter the phone number used to make payment and click "I Have PAYED"</li>
-            <li>&raquo; We will upgrade your account once we confirm you have payed</li>
+            <li>&raquo; Go To Lipa Na Mpesa Pay Bill number and Enter Business Number</li>
+            <li>&raquo; Enter Your Phone Number As The Account Number and Pay KSH {price}</li>
+            <li>&raquo; Enter the phone number used to make payment and click "I Have PAID"</li>
+            <li>&raquo; We will upgrade your account once we confirm you have paid</li>
         </ul>
         <form onSubmit={handleSubmit}>
-            <h4>TILL NUMBER: <h1>4139425</h1></h4>
+            <h4>BUSINESS NUMBER: </h4>
+            <h1>4139425</h1>
             <label htmlFor='name'>Phone number</label>
             <PhoneInput
               defaultCountry='ke'
@@ -95,7 +97,7 @@ const isPhoneValid = (phone) => {
             
             {/*<label htmlFor='amount'>Amount</label>
             <input type="number" name="amount" id="amount"  required value={price} disabled/>*/}
-            <button className="btn" type='submit' title='send'>I HAVE PAYED</button>
+            <button className="btn" type='submit' title='send'>I HAVE PAID</button>
             {
               error && <h4 className='error'>{error}</h4>
             }

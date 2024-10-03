@@ -20,6 +20,7 @@ import Register from "./pages/Register";
 import Ticket from "./pages/Ticket/Ticket";
 import { getUser, updateUser } from "./firebase";
 import MpesaModal from "./components/MpesaModal/MpesaModal";
+import AdminTips from "./pages/AdminTips";
 
 const helmetData = new HelmetData({});
 
@@ -67,13 +68,14 @@ function App() {
           <Route path='blogs' element={<News />} />
           <Route path='blogs/:id' element={<SingleNews />} />
           <Route path='admin' element={currentUser ? <Admin /> : <Login />}  />
+          <Route path='admin/tips' element={currentUser ? <AdminTips /> : <Login />}  />
           <Route path='about' element={<About />} />
           <Route path='*' element={<Error />} />
           <Route path='login' element={<Login />} />
           <Route path='register' element={<Register />} />
           
       </Routes>
-      <Footer/>
+      <Footer user={currentUser}/>
       </>
       }
     </div>

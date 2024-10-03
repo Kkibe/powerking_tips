@@ -24,10 +24,10 @@ export default function NewsItem({data}) {
   return (
   <div className="col-md-6 article-pre__col news-item">
     <NavLink to={`/blogs/${data.id.trim().split(' ').join("_")}`} title={truncateTitle(data.title, 5)}>
-      <div className="img" style={{background: `url(${data.imageUrl ? data.imageUrl : Image})`}}/>
+    <h2>{data.timestamp}</h2>
+      <img src={data.imageUrl ? data.imageUrl : Image} alt="" />
       <h4>
-        <span className="article-pre__cat">{data.category} • </span>
-        <span className="article-pre__aut">{data.timestamp}</span> 
+        <span className="article-pre__aut">{data.category}</span> 
         <span className="date"> - {readingTime(data.description)} mins read</span>
       </h4>
       <h3>{data.title}<span> <ArrowForward /></span></h3>

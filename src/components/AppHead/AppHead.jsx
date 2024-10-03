@@ -19,7 +19,7 @@ export default function AppHead() {
 <div className="tournee">
 <div className="ticket">
    <div className="img-ticket">
-      <img className="img" src={Daily}/>
+      <img className="img" src={Daily} alt='daily'/>
    </div>
    <h1 className='small'>Daily VIP</h1>
    <p>Access VIP predictions for 24 hours, perfect for short-term and immediate insights.</p>
@@ -27,19 +27,19 @@ export default function AppHead() {
 </div>
 <div className="ticket">
    <div className="img-ticket">
-      <img className="img" src={Weekly}/>
+      <img className="img" src={Weekly} alt='weekly'/>
    </div>
    <h1 className='small'>Weekly VIP</h1>
    <p>Enjoy a full week of VIP predictions with exclusive tips and detailed match analysis.</p>
-   <button onClick={() => handleClick(600)} className="btn">Subscribe</button>
+   <button onClick={() => handleClick(1200)} className="btn">Subscribe</button>
 </div>
 <div className="ticket">
    <div className="img-ticket">
-      <img className="img" src={Monthly}/>
+      <img className="img" src={Monthly} alt='monthly'/>
    </div>
    <h1 className='small'>Monthly VIP</h1>
    <p>Get unlimited VIP access for a month, ensuring consistent and high-quality predictions.</p>
-   <button onClick={() => handleClick(1500)}  className="btn">Subscribe</button>
+   <button onClick={() => handleClick(3000)}  className="btn">Subscribe</button>
 </div>
 
 </div>

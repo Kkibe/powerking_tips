@@ -1,17 +1,29 @@
 import { ArrowUpward, Facebook, Telegram, WhatsApp, X} from '@mui/icons-material';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './Footer.scss';
 import { Link, NavLink } from 'react-router-dom';
 import Newsletter from '../Newsletter/Newsletter';
 import { socialLinks } from '../../data';
 
-const Footer = () => {
+const Footer = ({user}) => {
+    const [isAdmin, setIsAdmin] = useState(null);
+
     const handleScroll = (e) => {
         window.scrollTo({
           top: 0,
           left: 0,
           behavior: 'smooth'
       })}
+
+      useEffect(() => {
+        if(user !== null){
+            if(user.email === 'kkibetkkoir@gmail.com' || user.email === 'charleykibet254@gmail.com') {
+                setIsAdmin(true)
+            } else {
+                setIsAdmin(false)
+            }
+        }
+      }, [user])
     return (
         <div className='footer theme'>
             <div className="wrapper">
@@ -23,6 +35,10 @@ const Footer = () => {
                         <NavLink to="/tips" title='books'>GET TIPS</NavLink>
                         <NavLink to="/blogs" title='contact'>READ BLOGS</NavLink> 
                         <NavLink to="/about" title='contact'>ABOUT US</NavLink>
+                        {
+                            isAdmin && <NavLink to="/admin/tips" title='contact'>ADD TIP</NavLink>
+                        }
+                        
                     </div>
                 </section>
                 <section>
@@ -31,6 +47,9 @@ const Footer = () => {
                         <NavLink to="/login" title='login'>LOGIN</NavLink>
                         <NavLink to="/register" title='register'>REGISTER</NavLink>
                         <NavLink to="/pay" title='get vip'>UPGRADE TO VIP</NavLink>
+                        {
+                            isAdmin && <NavLink to="/admin" title='contact'>ADD NEWS</NavLink>
+                        }
                         <NavLink to="https://web.telegram.org/k/#@Power_predict" title='inbox admin' target='_blank'>CONTACT ADMIN</NavLink>
                     </div>
                 </section>
