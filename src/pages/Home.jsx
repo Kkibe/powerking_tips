@@ -11,8 +11,13 @@ import { PriceContext } from '../PriceContext';
 export default function Home() {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [tips, setTips] = useState([]);
+  const [tips, setTips] = useState(null);
   const {setPrice} = useContext(PriceContext);
+
+  function formatDate() {
+    const date = new Date();
+    return date.toLocaleDateString('en-US');
+  }
 
   useEffect(() => {
     getNews(8, "all", setNews, setLoading);
@@ -27,7 +32,7 @@ export default function Home() {
   }, [isOnline]);
 
   useEffect(() =>{
-    getTips(20,setTips, setLoading);
+    getTips(20,setTips, setLoading, formatDate());
   }, [isOnline]);
 
   useEffect(() => {
@@ -39,26 +44,19 @@ export default function Home() {
   useLayoutEffect(() => {
     window.scrollTo(0, 0)
   });
-
-  const returnCurrentDate = () => {
-    const d = new Date()
-    let item = d.toLocaleString().split(',')[0]
-    return item;
-  }
-
   
   return (
     <div className='Home'>
-      <AppHelmet title={"Powerking Tips"}/>
+      <AppHelmet title={"Home"} location={''}/>
       <Flyer tips={tips}/>
       <h1>Pricing</h1>
       <AppHead />
       {
-        tips.length > 0 && <h1>Free Tips</h1>
+        tips && <h1>Free Tips</h1>
       }
 
       {
-          tips.length > 0 &&(
+        tips &&(
         <table className='wrapper'>
           <tr>
             <th>DATE</th>
@@ -69,8 +67,8 @@ export default function Home() {
           </tr>
 
           {
-             tips.filter((tip) => (tip.premium === false) && (tip.date === returnCurrentDate())).map(tip => {
-              return (<tr key={tip.id}  >
+             tips.filter((tip) => (tip.premium === false)).map(tip => {
+              return (<tr key={tips.indexOf(tip)}>
                         <td>
                           <span>{tip.date}</span>
                           <span>{tip.time}</span>

@@ -36,13 +36,13 @@ const Register = () => {
 
     return (
         <div className='register'>
-            <AppHelmet title={"Login Powerking Tips"} />
+            <AppHelmet title={"Register"} location={'/register'}/>
             <form action="">
                 <h2>SIGN UP Free!</h2>
                 <input type="email" onChange={e => setEmail(e.target.value)} placeholder='Email' required/>
                 <input type="text" onChange={e => setUsername(e.target.value)} placeholder='username' required/>
                 <input type="password" onChange={e => setPassword(e.target.value)} name="" id="" placeholder='password' required/>
-                <button type="submit"  onClick={handleRegister} title="register" className='btn'>REGISTER</button>
+                <button type="submit"  onClick={handleRegister} title="register" className='btn' aria-label="register">REGISTER</button>
                 {
                     error && <span className="error text-danger">{error}</span>
                 }

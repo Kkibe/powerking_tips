@@ -3,7 +3,7 @@
   "name": "POWERKING TIPS",
   "homepage": "https://powerkingtips.com",
   "version": "0.1.0",
-  "description": "Super Charge Your Bet With Free and Premium VIP Football Predictions",
+  "description": "Get all the latest ✓Football Predictions, ✓Latest Football Betting Odds and livescores, results & fixtures for all leagues and competitions, including the Premier League, Championship and across the world.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -52,7 +52,7 @@
       "purpose": "maskable"
     }
   ],
-  "author": "Kibet Korir",
+  "author": "Powerkintips",
   "repository": {
     "type": "git",
     "url": "https://github.com/kkibe/powerking-tips"

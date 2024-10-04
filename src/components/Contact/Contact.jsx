@@ -42,7 +42,7 @@ const Contact = () => {
                 <input type="email"  placeholder="EMAIL"  required value={email} onChange={(e) => setEmail(e.target.value)}/>
               </div>
               <textarea placeholder="MESSAGE" required value={message} onChange={(e) => setMessage(e.target.value)}/>
-              <button className='btn' title='send' type='submit'>SEND</button>
+              <button className='btn' title='send' type='submit' aria-label="send">SEND</button>
           </form> 
      </div>
     );

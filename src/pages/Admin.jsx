@@ -47,7 +47,7 @@ export default function Admin() {
     };
   return (
     <div className='admin'>
-        <AppHelmet title={"Admin Powerking Tips"}/>
+        <AppHelmet title={"Add News"} location={'/admin'}/>
         <h1>Post a blog <NavLink className='btn' onClick={handleLogOut}>Log Out</NavLink></h1>
         {!loading && <form onSubmit={handleSubmit}>
             <label htmlFor="title">post title:</label>
@@ -75,7 +75,7 @@ export default function Admin() {
             </select>
             <label htmlFor="description">post description:</label>
             <textarea placeholder="Write post content here..." name='description' id='description' required value={description} onChange={(e) => setDescription(e.target.value)}/>
-            <button className='btn'>Publish <Forward /></button>
+            <button className='btn' aria-label="publish">Publish <Forward /></button>
             {
               error && <h4 className='error'>{error}</h4>
             }

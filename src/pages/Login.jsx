@@ -27,7 +27,7 @@ export const Login = () => {
     });
     return (
         <div className='login'>
-            <AppHelmet title={"Login | Powerking Tips"}/>
+            <AppHelmet title={"Login"} location={'/login'}/>
             <form onSubmit={handleSubmit}>
                 <h2>Welcome Back</h2>
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='enter email' required/>
@@ -36,7 +36,7 @@ export const Login = () => {
                     <input type="checkbox" id="checkbox" />
                     <label htmlFor="checkbox">Keep me Sign in</label>
                 </div>
-                <button type="submit" title="login" className='btn'>LOGIN</button>
+                <button type="submit" title="login" className='btn' aria-label="login">LOGIN</button>
                 {
                     error && <h4 className='error'>{error}Try again</h4>
                 }

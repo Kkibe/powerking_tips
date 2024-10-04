@@ -209,19 +209,34 @@ export  const addNews = async (data, setError, setLoading) => {
   
 };
 
-export const getTips= async (pagination, setTips, setLoading) => {
+export const getTips= async (pagination, setTips, setLoading, currentDate) => {
   setLoading(true);
-  
   const tipsCollectionRef = collection(db, "tips");
-  var q = query(tipsCollectionRef, limit(pagination));
+  var q = query(tipsCollectionRef,where("date", "==", currentDate), limit(pagination));
 
   const tips = [];
   await getDocs(q).then((data) => {
     data.forEach((doc) => {
-     tips.push({id: doc.id,...doc.data()});
+      tips.push({id: doc.id,...doc.data()});
     });
   }).then(() => {
     setTips(tips);
     setLoading(false);
   }).catch(err => setLoading(false));
+};
+
+
+export const getWonTips= async (pagination, setTips) => {
+  const tipsCollectionRef = collection(db, "tips");
+  var q = query(tipsCollectionRef,where("won", "==", "won"), limit(pagination));
+  const tips = [];
+  await getDocs(q).then((data) => {
+    data.forEach((doc) => {
+      tips.push({id: doc.id,...doc.data()});
+    });
+  }).then(() => {
+    setTips(tips);
+  }).catch(err => {
+    return;
+  });
 };

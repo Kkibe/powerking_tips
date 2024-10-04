@@ -8,7 +8,7 @@ export default function Error() {
   });
   return (
     <div className='not-found'>
-      <AppHelmet title={"PAGE NOT FOUND POWERKING TIPS"}/>
+      <AppHelmet title={"Not Found"} location={window.location.pathname}/>
       <h1>404 ERROR!</h1>
       <h2>Page not found</h2>
       <div className="btn"  onClick={() =>{

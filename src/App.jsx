@@ -21,6 +21,7 @@ import Ticket from "./pages/Ticket/Ticket";
 import { getUser, updateUser } from "./firebase";
 import MpesaModal from "./components/MpesaModal/MpesaModal";
 import AdminTips from "./pages/AdminTips";
+import Paidpage from "./pages/PaidPage";
 
 const helmetData = new HelmetData({});
 
@@ -65,6 +66,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='tips' element={<Tips userData={userData}/>} />
           <Route path='pay' element={currentUser ? <Ticket /> : <Login />}  />
+          <Route path="paid-submit" element={<Paidpage />} />
           <Route path='blogs' element={<News />} />
           <Route path='blogs/:id' element={<SingleNews />} />
           <Route path='admin' element={currentUser ? <Admin /> : <Login />}  />

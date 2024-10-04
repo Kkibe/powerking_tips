@@ -33,7 +33,7 @@ const Newsletter = () => {
             </p>
             <form onSubmit={handleSubmit}>
                 <input type='email' placeholder='Email Address' required value={email} onChange={(e) => setEmail(e.target.value)}/>
-                <button type='submit' name='subscribe-btn' title='subscribe'>
+                <button type='submit' name='subscribe-btn' title='subscribe' aria-label="submit">
                     <Send />
                 </button>
             </form>

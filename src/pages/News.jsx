@@ -6,6 +6,7 @@ import {NetworkWifi1Bar} from '@mui/icons-material';
 import { useLocation } from 'react-router-dom';
 import Loader from '../components/Loader/Loader'
 import { Helmet } from 'react-helmet-async';
+import AppHelmet from '../components/AppHelmet';
 
 
 export default function News() {
@@ -44,16 +45,7 @@ export default function News() {
 
   return (
     <div className='news'>
-          <Helmet>
-            <meta charSet="utf-8" />
-            <title>Sports Blog | Powerking Tips</title>
-            <link rel="canonical" href={window.location.hostname} />
-            <base href={window.location.hostname}></base>
-            <meta name="description" content='Get all the latest ✓Football Predictions, ✓Latest Betting Odds and latest live football scores, results & fixtures for all leagues and competitions, including the Premier League, Championship and across the world on powerking.'/>
-            <meta name="author" content="POWERKING TIPS"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <meta name='google-adsense-account' content='ca-pub-9576945242972545' />
-          </Helmet>
+      <AppHelmet title={"News"} location={'/news'}/>
       <div className="news-flyer">
         <h1>SPORTS TIMES</h1>
         <div className="order-categories">

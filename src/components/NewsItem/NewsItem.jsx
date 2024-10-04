@@ -25,7 +25,7 @@ export default function NewsItem({data}) {
   <div className="col-md-6 article-pre__col news-item">
     <NavLink to={`/blogs/${data.id.trim().split(' ').join("_")}`} title={truncateTitle(data.title, 5)}>
     <h2>{data.timestamp}</h2>
-      <img src={data.imageUrl ? data.imageUrl : Image} alt="" />
+      <img src={data.imageUrl ? data.imageUrl : Image} alt={data.title.substring(0, 8)} />
       <h4>
         <span className="article-pre__aut">{data.category}</span> 
         <span className="date"> - {readingTime(data.description)} mins read</span>

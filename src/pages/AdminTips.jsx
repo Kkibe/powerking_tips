@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../AuthContext';
 import Loader from '../components/Loader/Loader';
 import { addTip } from '../firebase';
+import AppHelmet from '../components/AppHelmet';
 
 export default function AdminTips() {
     const [home, setHome] = useState('');
@@ -37,6 +38,7 @@ export default function AdminTips() {
 
   return (
     <div className='admin-tips'>
+        <AppHelmet title={"Add Tip"} location={'/admin/tips'}/>
         {!loading && <form onSubmit={handleSubmit}>
             <div className="input-container vertical">
                 <label htmlFor="home">Home Team</label>
@@ -74,7 +76,7 @@ export default function AdminTips() {
                 <label htmlFor="premium">Is premium</label>
                 <input type="checkbox" placeholder='premium' id='premium' onChange={(e) => setPremium(e.target.checked)} checked={premium}/>
             </div>
-            <button type="submit" className='btn' title='Submit'>Add</button>
+            <button type="submit" className='btn' title='Submit' aria-label="add">Add</button>
         </form>}
 
         {

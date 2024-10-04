@@ -23,7 +23,7 @@ export default function AppHead() {
    </div>
    <h1 className='small'>Daily VIP</h1>
    <p>Access VIP predictions for 24 hours, perfect for short-term and immediate insights.</p>
-   <button onClick={() => handleClick(100)} className="btn">Subscibe</button>
+   <button onClick={() => handleClick(100)} className="btn" aria-label="subscibe">Subscibe</button>
 </div>
 <div className="ticket">
    <div className="img-ticket">
@@ -31,7 +31,7 @@ export default function AppHead() {
    </div>
    <h1 className='small'>Weekly VIP</h1>
    <p>Enjoy a full week of VIP predictions with exclusive tips and detailed match analysis.</p>
-   <button onClick={() => handleClick(1200)} className="btn">Subscribe</button>
+   <button onClick={() => handleClick(1200)} className="btn" aria-label="subscibe">Subscribe</button>
 </div>
 <div className="ticket">
    <div className="img-ticket">
@@ -39,7 +39,7 @@ export default function AppHead() {
    </div>
    <h1 className='small'>Monthly VIP</h1>
    <p>Get unlimited VIP access for a month, ensuring consistent and high-quality predictions.</p>
-   <button onClick={() => handleClick(3000)}  className="btn">Subscribe</button>
+   <button onClick={() => handleClick(3000)}  className="btn" aria-label="subscibe">Subscribe</button>
 </div>
 
 </div>

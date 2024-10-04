@@ -23,11 +23,15 @@ export default function PostDetail({data, userData}) {
       }
     }, [userData])
 
+    function formatDate() {
+      const date = new Date();
+      return date.toLocaleDateString('en-US');
+    }
   return (
     <div className='post-detail active' >
         <Close className='close' onClick={handleClick}/>
         <div className="detail-header">
-            <img src={data.premium ? Profile : Logo} alt="powerkin_vip" />
+            <img src={data.premium ? Profile : Logo} alt="powerking_vip" />
             <h3>{data.date} - {data.time}</h3>
         </div>
         <h4>
@@ -38,15 +42,15 @@ export default function PostDetail({data, userData}) {
           </h4>
         <hr className="divider"/>
         <h4><span style={{
-                           color: (data.premium && (data.status !== 'finished') && !isPremium) && 'transparent',
-                           textShadow: (data.premium && (data.status !== 'finished') && !isPremium) && '0 0 5px rgba(0,0,0,.1)'}}>{data.home}</span> <span>{data.results ? data.results.split('-')[0] : "?" }</span></h4>
+                           color: (data.premium && (data.status !== 'finished') && (!isPremium && data.date === formatDate())) && 'transparent',
+                           textShadow: (data.premium && (data.status !== 'finished') && (!isPremium && data.date === formatDate())) && '0 0 5px rgba(0,0,0,.1)'}}>{data.home}</span> <span>{data.results ? data.results.split('-')[0] : "?" }</span></h4>
         <hr className="divider"/>
         <h4><span style={{
-                           color: (data.premium && (data.status !== 'finished') && !isPremium) && 'transparent',
-                           textShadow: (data.premium && (data.status !== 'finished') && !isPremium) && '0 0 5px rgba(0,0,0,.1)'}}>{data.away}</span> <span>{data.results ? data.results.split('-')[1] : "?" }</span></h4>
+                           color: (data.premium && (data.status !== 'finished') && (!isPremium && data.date === formatDate())) && 'transparent',
+                           textShadow: (data.premium && (data.status !== 'finished') && (!isPremium && data.date === formatDate())) && '0 0 5px rgba(0,0,0,.1)'}}>{data.away}</span> <span>{data.results ? data.results.split('-')[1] : "?" }</span></h4>
         <hr className="divider"/>
         <div className="detail-btn">
-          <button className="btn" disabled>💡{data.pick}</button>
+          <button className="btn" disabled aria-label="premium">💡{data.pick}</button>
           {(data.premium && !isPremium) && <Link to={'/pay'} className='btn' onClick={() => setPrice(1)}>GET VIP</Link>}
         </div>
     </div>

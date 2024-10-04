@@ -16,6 +16,15 @@ export default function Tips({userData}) {
   const [active, setActive] = useState(null)
   const [category, setCategory] = useState('premium')
 
+
+  function formatDate(dateString) {
+    // Create a new Date object from the input string
+    const date = new Date(dateString);
+    // Format the date as mm/dd/yyyy
+    return date.toLocaleDateString('en-US');
+  }
+
+
   useLayoutEffect(() => {
     window.scrollTo(0, 0)
   });
@@ -25,8 +34,8 @@ export default function Tips({userData}) {
 
   
   useEffect(() =>{
-    getTips(tipsPerPage, setTips, setLoading);
-  }, [isOnline, tipsPerPage]);
+    getTips(tipsPerPage, setTips, setLoading, formatDate(currentDate));
+  }, [isOnline, tipsPerPage, currentDate]);
 
   useEffect(() => {
     let dates = [];
@@ -55,7 +64,7 @@ export default function Tips({userData}) {
   }, [loading]);
   
   const handleReload = () => {
-    getTips(tipsPerPage, setTips, setLoading);
+    getTips(tipsPerPage, setTips, setLoading, formatDate(currentDate));
   }
 
 
@@ -98,16 +107,9 @@ export default function Tips({userData}) {
     document.querySelector(".post-detail").classList.add("active")
   };
 
-  const returnCurrentDate = (date) => {
-    const d = new Date(date)
-    let item = d.toLocaleString().split(',')[0]
-    return item;
-  }
-
-
   return (
     <div className="tips">
-      <AppHelmet title={"Powerking Tips"} />
+      <AppHelmet title={"Powerking Tips"} location={'/tips'}/>
       <div className='container'>
       <div className="filter-wrapper">
         <p>September 2024</p>
@@ -119,7 +121,7 @@ export default function Tips({userData}) {
       <div className="filter">
           {
             days && days.map((day) => {
-              return <button className={`btn-filter ${(currentDate === day) && 'active'}`} onClick={() => setCurrentDate(day)}>
+              return <button className={`btn-filter ${(currentDate === day) && 'active'}`} onClick={() => setCurrentDate(day)} key={days.indexOf(day)} aria-label={day}>
                 <span>{returnDate(day).split(" ")[1].substring(0, 3)}</span>
                 <span>{returnDate(day).split(" ")[0]}</span>
               </button>
@@ -136,18 +138,18 @@ export default function Tips({userData}) {
           <th>ODDS</th>
         </tr>
         {
-          (tips.length > 0) && tips.filter((tip) => (category==='free') ? (tip.premium === false) : (tip.premium === true)).filter(tip => tip.date === returnCurrentDate(currentDate)).map(tip => {
-            return (<tr setActive={setActive} key={tip.id} onClick={() => handleClick(tip)} >
+          (tips.length > 0) && tips.filter((tip) => (category==='free') ? (tip.premium === false) : (tip.premium === true)).map(tip => {
+            return (<tr key={tip.id} onClick={() => handleClick(tip)} >
                       <td>
                         <span>{tip.date}</span>
                         <span>{tip.time}</span>
                       </td>
                       <td style={{
-                           color: (tip.premium && (tip.status !== 'finished')) && 'transparent',
-                           textShadow: (tip.premium && (tip.status !== 'finished')) && '0 0 5px rgba(0,0,0,.2)'}}>{tip.home}</td>
+                           color: (tip.premium && (tip.date === formatDate(days[days.length - 1]))) && 'transparent',
+                           textShadow: (tip.premium && (tip.date === formatDate(days[days.length - 1]))) && '0 0 5px rgba(0,0,0,.2)'}}>{tip.home}</td>
                       <td style={{
-                           color: (tip.premium && (tip.status !== 'finished')) && 'transparent',
-                           textShadow: (tip.premium && (tip.status !== 'finished')) && '0 0 5px rgba(0,0,0,0.2)'}}>{tip.away}</td>
+                           color: (tip.premium && (tip.date === formatDate(days[days.length - 1]))) && 'transparent',
+                           textShadow: (tip.premium && (tip.date === formatDate(days[days.length - 1]))) && '0 0 5px rgba(0,0,0,0.2)'}}>{tip.away}</td>
                       <td>{tip.pick}</td>
                       <td>{tip.odd}</td>
                     </tr>)

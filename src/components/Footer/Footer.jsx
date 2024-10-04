@@ -88,7 +88,7 @@ const Footer = ({user}) => {
             <div className='footer-bottom theme'>
                 <p>&copy; POWERKING TIPS {new Date().getFullYear()}</p>
                 <Link to={'/about#faq'} title='what people ask'>FAQ</Link>
-                <button className="btn-top" onClick={() => handleScroll()}><ArrowUpward/></button>
+                <button className="btn-top" onClick={() => handleScroll()} aria-label="to-top"><ArrowUpward/></button>
             </div>
         
         </div>

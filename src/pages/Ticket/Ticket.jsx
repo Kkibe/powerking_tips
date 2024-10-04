@@ -1,6 +1,7 @@
 import React, { useContext} from 'react'
 import './Ticket.scss';
 import { PriceContext } from '../../PriceContext';
+import AppHelmet from '../../components/AppHelmet';
 
 export default function Ticket() {
   const {price, setPrice} = useContext(PriceContext)
@@ -17,7 +18,8 @@ export default function Ticket() {
   }
   return (
     <div className="pay">
-        <h2>UPGRADE TO VIP NOW!</h2>
+      <AppHelmet title={"Pay"} location={'/pay'}/>
+      <h2>UPGRADE TO VIP NOW!</h2>
       <form>
       <fieldset>
         <input name="prices" type="radio" value={100} id="daily" checked={price===100 ? true : false}   onChange={(e) => setPrice(100)}/>

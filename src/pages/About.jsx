@@ -11,7 +11,7 @@ export default function About() {
   });
   return (
 <div className='about'>
-    <AppHelmet title={"About | Powerking Tips"}/>
+    <AppHelmet title={"About"} location={'/about'}/>
     <div className="quote">
       <video className='video' autoPlay loop muted>
         <source src={Bg} type='video/mp4' />
