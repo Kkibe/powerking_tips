@@ -28,7 +28,7 @@
             color: var(--dark);
             flex: 7;
             border: none;
-            background: var(--light-blue)
+            background: var(--light-grey);
         }
         
         button{
@@ -40,8 +40,7 @@
             background: var(--blue);
             cursor: pointer;
             &:hover{
-                color: var(--blue);
-                background: var(--light-blue);
+                background: var(--dark-blue);
             }
         }
     }
@@ -50,6 +49,6 @@
     }
     
     .error{
-        color: red;
+        color: var(--even);
     }
 }

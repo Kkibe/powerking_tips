@@ -46,6 +46,7 @@ header{
         justify-content: space-evenly;
         gap: 5px;
         position: relative;
+        unicode-bidi: isolate;
         
         
         > a{
@@ -53,10 +54,11 @@ header{
             text-decoration: none;
             color: var(--blue);
             font-weight: 800;
-            font-size: 17px;
+            font-size: 16px;
             padding: 0 5px;
+            text-transform: uppercase;
         
-            &:hover {
+            &:hover{
                 background: var(--light-blue);
                 transform: scale(1.2);
                 text-decoration: none;
@@ -104,16 +106,18 @@ header{
                 align-items: center;
 
                 a{
-                    width: 80%;
+                    width: 90%;
+                    text-align: start;
                     &:hover{
-                        border-bottom: 2px solid var(--blue);
+                        //border-bottom: 2px solid var(--blue);
+                        transform: scale(1.01);
                     }
                 }
                 
                 .active{
                     background: var(--light-blue);
                     border-bottom: none;
-                    transform: scale(1.2);
+                    transform: scale(1.01);
                     text-decoration: none;
                 }
             }

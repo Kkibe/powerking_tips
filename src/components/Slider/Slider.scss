@@ -43,13 +43,12 @@
       }
 
       p{
-        color: black;
+        color: var(--black)
       }
 
       .tag{
-        border: 1px solid #efefef;
+        border: 1px solid var(--light-grey);
         width: fit-content;
-        border-radius: 30px;
         padding: 0.25rem 0.5rem;
         font-size: 0.65rem;
         margin-top: 10px;

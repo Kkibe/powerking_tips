@@ -46,7 +46,7 @@ const Register = () => {
                 {
                     error && <span className="error text-danger">{error}</span>
                 }
-                <div className="text">Already have an account ?&emsp;|&emsp;<NavLink to='/login'>Login !</NavLink>  </div>
+                <div className="text">Already have an account?&emsp;|&emsp;<NavLink to='/login'>Login &raquo;</NavLink>  </div>
             </form>
         </div>
     );

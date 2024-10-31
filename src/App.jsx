@@ -22,6 +22,8 @@ import { getUser, updateUser } from "./firebase";
 import MpesaModal from "./components/MpesaModal/MpesaModal";
 import AdminTips from "./pages/AdminTips";
 import Paidpage from "./pages/PaidPage";
+import PaypalPayment from "./pages/Ticket/PayPalPayment";
+import CryptoPayments from "./pages/CryptoPayments";
 
 const helmetData = new HelmetData({});
 
@@ -65,7 +67,8 @@ function App() {
       <Routes>
           <Route path='/' element={<Home />} />
           <Route path='tips' element={<Tips userData={userData}/>} />
-          <Route path='pay' element={currentUser ? <Ticket /> : <Login />}  />
+          <Route path='pay' element={currentUser ? <PaypalPayment /> : <Login />}  />
+          <Route path='pay/crypto' element={currentUser ? <CryptoPayments /> : <Login />}  />
           <Route path="paid-submit" element={<Paidpage />} />
           <Route path='blogs' element={<News />} />
           <Route path='blogs/:id' element={<SingleNews />} />

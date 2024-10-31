@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Flyer.scss'
 import { Link} from 'react-router-dom';
 import { PriceContext } from '../../PriceContext';
-import S3 from '../../assets/s1.mp4';
-import PostCard from '../PostCard/PostCard';
 import { getWonTips } from '../../firebase';
+import { ErrorTwoTone, TimelapseOutlined, Verified } from '@mui/icons-material';
 
 export default function Flyer() {
   const {setPrice} = useContext(PriceContext);
@@ -13,32 +12,41 @@ export default function Flyer() {
     return navigator.onLine
   })
 
-  const videoRef= useRef();
-  const setPlayBack = () => {
-    videoRef.current.playbackRate = 0.5;
-  };
-
-
-
-
   useEffect(() =>{
     getWonTips(8,setTips);
   }, [isOnline]);
 
+  function truncateLeague(input, value) {
+    if (input.length > value) {
+       return input.substring(0, value) + '...';
+    }
+    return input;
+  };
 
   return (
     <div className='flyer'>
-          <video className='background' autoPlay loop muted ref={videoRef} onCanPlay={() => setPlayBack()}>
-            <source src={S3} type="video/mp4" />
-          </video>
-          <h1 className='title'>Unlock exclusive VIP predictions—boost your winnings today!</h1>
-          <h2 className='title'>Win big anywhere you are with Expert Football Predictions</h2>
-          <Link to={'pay'} className='btn' onClick={() => setPrice(3000)}>Become A Member</Link>
+          <h1 className='title'>Expert Football Predictions!</h1>
+          <h2 className='title'>Unlock the secret of winning high today!</h2>
+          <Link to={'pay'} className='btn' onClick={() => setPrice(3000)}>GET STARTED</Link>
           <div className="scroll">
             <div className="scroll-track">
             {
               tips && tips.filter((tip) =>(tip.won === 'won')).map((tip) => {
-                return <PostCard active setActive key={tip.id} data={tip}/>
+                return (
+                <div className="post-card" key={tip.id} style={{borderLeft: tip.premium ? "5px solid #FFBD59" : "5px solid green"}}>
+                  <div className="center">
+                    <div className="teams">
+                      <p className="name">{truncateLeague(tip.home , 10)}</p>
+                      <div className="results">{tip.results}</div>
+                      <p className="name">{truncateLeague(tip.away , 15)}</p>
+                    </div>
+                    <div className='info'>
+                      <p><TimelapseOutlined className='icon'/>{tip.date}</p>
+                      <p>{tip.won ? <>{tip.odd} <Verified className='icon won'/></> : <>{tip.odd} <ErrorTwoTone className='icon lost'/></>  }</p>
+                    </div>
+                  </div>
+                </div>
+                )
               })
             }
             </div>

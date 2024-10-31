@@ -1,11 +1,10 @@
 import React, { useEffect, useLayoutEffect, useState } from 'react';
 import PostDetail from '../components/PostDetails/PostDetails';
-import {NetworkWifi1Bar} from '@mui/icons-material';
+import {Error, NetworkWifi1Bar, Verified} from '@mui/icons-material';
 import {NavLink} from 'react-router-dom';
 import {getTips} from '../firebase';
 import Loader from '../components/Loader/Loader';
 import AppHelmet from '../components/AppHelmet';
-
 
 export default function Tips({userData}) {
   const [loading, setLoading] = useState(true);
@@ -102,8 +101,8 @@ export default function Tips({userData}) {
   }
  
 
-  const handleClick = (tip) => {
-    setActive(tip);
+  const handleClick = async (tip) => {
+    setActive(tip)
     document.querySelector(".post-detail").classList.add("active")
   };
 
@@ -129,20 +128,20 @@ export default function Tips({userData}) {
           }
         </div>
 
-      <table>
+      <table className='tips-table'>
         <tr>
-          <th>DATE</th>
+          <th>TIME</th>
           <th>HOME</th>
           <th>AWAY</th>
           <th>TIP</th>
           <th>ODDS</th>
+          <th>RESULTS</th>
         </tr>
         {
           (tips.length > 0) && tips.filter((tip) => (category==='free') ? (tip.premium === false) : (tip.premium === true)).map(tip => {
             return (<tr key={tip.id} onClick={() => handleClick(tip)} >
                       <td>
-                        <span>{tip.date}</span>
-                        <span>{tip.time}</span>
+                        {tip.time}
                       </td>
                       <td style={{
                            color: (tip.premium && (tip.date === formatDate(days[days.length - 1]))) && 'transparent',
@@ -152,6 +151,7 @@ export default function Tips({userData}) {
                            textShadow: (tip.premium && (tip.date === formatDate(days[days.length - 1]))) && '0 0 5px rgba(0,0,0,0.2)'}}>{tip.away}</td>
                       <td>{tip.pick}</td>
                       <td>{tip.odd}</td>
+                      <td>{tip.won === 'won' ? <span className='won'><p>Won</p> <Verified className='icon'/></span>  : tip.status === "pending" ? <span>?-?</span> : <span className='lost'><p>Lost</p> <Error className='icon'/></span>}</td>
                     </tr>)
           })
         }

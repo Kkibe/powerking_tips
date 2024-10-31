@@ -69,11 +69,11 @@
             margin: 0;
         }
         .error{
-            color: red;
+            color: var(--even);
         }
 
         .success{
-            color: green;
+            color: var(--blue);
         }
     }
 

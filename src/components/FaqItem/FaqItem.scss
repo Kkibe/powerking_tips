@@ -1,5 +1,4 @@
 .faqItem{
-    background-color: transparent;
     border: 1px solid var(--light-color);
     border-radius: 5px;
     padding: 10px 5px;
@@ -87,7 +86,7 @@
         box-shadow: 0 3px 6px var(--box-shadow);
         transition: 2s ease-in;
         &::before, &::after{
-            color: #2ecc71;
+            color: var(--blue);
             content: '\f075';
             position: absolute;
             opacity: 0.2;

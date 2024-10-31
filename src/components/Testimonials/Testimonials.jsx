@@ -14,7 +14,7 @@ export default function Testimonials() {
         {
             testimonies && testimonies.map(testimonial => {
                 return  <div className="testimonial" key={testimonials.indexOf(testimonial)}>
-                <h4>"{testimonial.text}"</h4>
+                <p>"{testimonial.text}"</p>
                 <div className="user">
                     <div className="name">- {testimonial.name}</div>
                     <div className="country">{testimonial.country}</div>

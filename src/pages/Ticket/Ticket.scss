@@ -9,23 +9,23 @@
 
 .pay{
     width: 100%;
+    min-height: 50vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     padding: .3rem;
-    background-color: var(--lite);
     text-align: center;
-
 
     form{
     width: 100%;
     max-width: 40em;
-    margin: auto auto .5em auto;
+    //margin: auto auto .5em auto;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     grid-gap: 1rem;
     padding: 5px 5px;
+    background: var(--transparent);
     
     @media(min-width: 400px){
       grid-template-columns: repeat(2, 1fr);
@@ -85,7 +85,7 @@
           input[type="radio"]:checked{
             ~ label{
               background: #56b056;
-              color: white;
+              color: var(--lite);
               box-shadow: 0 0.2em 0.45em 0.1em rgba(0,0,0, 0.4);
               transform: scale(1.05);
               animation: checked 200ms 1;

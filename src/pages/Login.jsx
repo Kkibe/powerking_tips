@@ -32,16 +32,12 @@ export const Login = () => {
                 <h2>Welcome Back</h2>
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder='enter email' required/>
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder='password' required/>
-                <div className="checkbox-holder">
-                    <input type="checkbox" id="checkbox" />
-                    <label htmlFor="checkbox">Keep me Sign in</label>
-                </div>
                 <button type="submit" title="login" className='btn' aria-label="login">LOGIN</button>
                 {
                     error && <h4 className='error'>{error}Try again</h4>
                 }
                 
-                <div className="text">Dont't have an account ?&emsp;|&emsp;<NavLink to='/register'>Sign Up !</NavLink>  </div>
+                <div className="text">Don't have an account?&emsp;|&emsp;<NavLink to='/register'>Sign Up &raquo;</NavLink>  </div>
             </form>
         </div>
     );

@@ -35,6 +35,7 @@ const Footer = ({user}) => {
                         <NavLink to="/tips" title='books'>GET TIPS</NavLink>
                         <NavLink to="/blogs" title='contact'>READ BLOGS</NavLink> 
                         <NavLink to="/about" title='contact'>ABOUT US</NavLink>
+                        <Link to={socialLinks.affliateLink} title='contact' target='_blank'>GET FREE BET</Link>
                         {
                             isAdmin && <NavLink to="/admin/tips" title='contact'>ADD TIP</NavLink>
                         }
@@ -87,8 +88,7 @@ const Footer = ({user}) => {
             <hr />
             <div className='footer-bottom theme'>
                 <p>&copy; POWERKING TIPS {new Date().getFullYear()}</p>
-                <Link to={'/about#faq'} title='what people ask'>FAQ</Link>
-                <button className="btn-top" onClick={() => handleScroll()} aria-label="to-top"><ArrowUpward/></button>
+                <button className={`btn-top`} onClick={() => handleScroll()} aria-label="to-top"><ArrowUpward/></button>
             </div>
         
         </div>

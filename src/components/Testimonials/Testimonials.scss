@@ -15,26 +15,40 @@
     .testimonial{
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        justify-content: center;
         width: 90vw;
-        min-width: 295px;
-        min-height: 100px;
-        flex: 1;
-        background: white;
+        min-width: 305px;
+        min-height: 120px;
+        background: var(--lite);
         box-shadow: 0 0.05rem .1rem rgba(0, 0, 0, 0.15);
         border: 0;
         border: none;
         padding: .5rem 0.5rem;
         position: relative;
-        border-radius: 0px 20px 0px 20px;
+        border-radius: 5px;
+        text-align: center;
+        position: relative;
+
+        p{
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--grey);
+        }
 
         .user{
             width: 100%;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            margin: 10px 0;
+            position: absolute;
+            bottom: 0;
             *{
-                font-size: 12px;
+                font-size: 14px;
+                font-weight: 600;
+            }
+            .country{
+                display: none;
             }
         }
     }

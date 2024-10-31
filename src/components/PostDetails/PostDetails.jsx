@@ -12,13 +12,14 @@ export default function PostDetail({data, userData}) {
     const {setPrice} = useContext(PriceContext);
     const {currentUser} = useContext(AuthContext);
     const [isPremium, setIsPremium] = useState(false);
+    var x = window.matchMedia("(min-width: 576px)")
 
     const handleClick = () => {
       document.querySelector(".post-detail").classList.remove("active")
     }
 
     useEffect(() => {
-      if(userData != null){
+      if(userData !== null){
         setIsPremium(userData.isPremium)
       }
     }, [userData])
@@ -28,7 +29,7 @@ export default function PostDetail({data, userData}) {
       return date.toLocaleDateString('en-US');
     }
   return (
-    <div className='post-detail active' >
+    <div className={`post-detail ${x.matches && "active"}`} >
         <Close className='close' onClick={handleClick}/>
         <div className="detail-header">
             <img src={data.premium ? Profile : Logo} alt="powerking_vip" />

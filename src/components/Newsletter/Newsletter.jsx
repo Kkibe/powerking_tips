@@ -25,9 +25,9 @@ const Newsletter = () => {
     
     return (
         <div className='newsletter theme'>
-            <h3>
+            <h4>
                 Join The Network
-            </h3>
+            </h4>
             <p>
                 Subscribe to our news feeds, kindly fill the form below.
             </p>

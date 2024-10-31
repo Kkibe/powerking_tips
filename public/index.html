@@ -13,6 +13,7 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" crossorigin="*"/>  
     <link rel="shortcut icon" type="image/x-icon" href="%PUBLIC_URL%/logo512.png" />
     <title>Powerking Tips</title>
+    <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -24,9 +25,19 @@
                }).catch(error => {
                    console.error('Service Worker registration failed:', error);
               });
-         }
-        </script>
-    <script type="text/jsx" src='https://code.jquery.com/jquery-3.2.1.min.js'></script>
+        }
+
+        PayPal.Donation.Button({
+      env:'production',
+      hosted_button_id:'WAUXGH9WGKFU6',
+      image: {
+      src:'https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif',
+      alt:'Donate with PayPal button',
+      title:'PayPal - The safer, easier way to pay online!',
+      }
+    }).render('#donate-button');
+    </script>
+    <script type="text/jsx" src='https://code.jquery.com/jquery-3.2.1.min.js' ></script>
     <script type="text/jsx" src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script type="text/jsx" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
     <script type="text/jsx" src="../src/index.js"></script>

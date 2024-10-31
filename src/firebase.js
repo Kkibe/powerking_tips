@@ -164,8 +164,8 @@ export const addPhone = async (data) => {
 
 export  const addTip = async (data, setError, setLoading) => {
   setLoading(true);
-  const tipsDocRef = collection(db, "tips");
-  await addDoc(tipsDocRef, {
+  const tipsDocRef = doc(db, "tips", data.home.trim() + data.away.trim() + data.date.split("/").join(""));
+  await setDoc(tipsDocRef, {
     ...data
   }).then(async (docRef) => {
     alert("tip added")
@@ -175,7 +175,6 @@ export  const addTip = async (data, setError, setLoading) => {
     setLoading(false);
   });
   setLoading(false)
-  
 };
 
 export  const addNews = async (data, setError, setLoading) => {
@@ -225,6 +224,22 @@ export const getTips= async (pagination, setTips, setLoading, currentDate) => {
   }).catch(err => setLoading(false));
 };
 
+export const getAllTips= async (setTips, setLoading) => {
+  setLoading(true);
+  const tipsCollectionRef = collection(db, "tips");
+  var q = query(tipsCollectionRef, orderBy("date"));
+
+  const tips = [];
+  await getDocs(q).then((data) => {
+    data.forEach((doc) => {
+      tips.push({id: doc.id,...doc.data()});
+    });
+  }).then(() => {
+    setTips(tips.reverse());
+    setLoading(false);
+  }).catch(err => setLoading(false));
+};
+
 
 export const getWonTips= async (pagination, setTips) => {
   const tipsCollectionRef = collection(db, "tips");
@@ -239,4 +254,4 @@ export const getWonTips= async (pagination, setTips) => {
   }).catch(err => {
     return;
   });
-};
+}
